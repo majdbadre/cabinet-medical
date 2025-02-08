@@ -1,0 +1,122 @@
+{
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. Ahmed El Amrani",
+      "specialty": "Cardiologist",
+      "image": "/images/doctor01.jpeg",
+      "address": "123 Rue Mohammed V, Casablanca, Morocco",
+      "price": 300,
+      "reviews": 4.7,
+      "experience": "15 years",
+      "languages": ["Arabic", "French", "English"],
+      "specializations": ["Heart Disease", "Hypertension"],
+      "education": "MD in Cardiology, University of Casablanca"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Fatima Zahra Benjelloun",
+      "specialty": "Dermatologist",
+      "image": "/images/doctor02.avif",
+      "address": "456 Avenue Hassan II, Rabat, Morocco",
+      "price": 250,
+      "reviews": 4.5,
+      "experience": "10 years",
+      "languages": ["Arabic", "French"],
+      "specializations": ["Acne Treatment", "Skin Cancer"],
+      "education": "MD in Dermatology, University of Rabat"
+    },
+    {
+      "id": 3,
+      "name": "Dr. Youssef Bouzidi",
+      "specialty": "Orthopedic Surgeon",
+      "image": "/images/doctor05.avif",
+      "address": "789 Boulevard Mohamed VI, Marrakech, Morocco",
+      "price": 400,
+      "reviews": 4.8,
+      "experience": "20 years",
+      "languages": ["Arabic", "French", "English"],
+      "specializations": ["Joint Replacement", "Sports Injuries"],
+      "education": "MD in Orthopedics, University of Marrakech"
+    },
+    {
+      "id": 4,
+      "name": "Dr. Leila Mansouri",
+      "specialty": "Pediatrician",
+      "image": "/images/doctor03.avif",
+      "address": "101 Rue Al Amir Moulay Abdallah, Tangier, Morocco",
+      "price": 200,
+      "reviews": 4.6,
+      "experience": "12 years",
+      "languages": ["Arabic", "French", "Spanish"],
+      "specializations": ["Childhood Vaccination", "Nutrition"],
+      "education": "MD in Pediatrics, University of Tangier"
+    },
+    {
+      "id": 5,
+      "name": "Dr. Karim Belhaj",
+      "specialty": "Neurologist",
+      "image": "/images/doctor04.avif",
+      "address": "202 Avenue des FAR, Fes, Morocco",
+      "price": 350,
+      "reviews": 4.9,
+      "experience": "18 years",
+      "languages": ["Arabic", "French", "English"],
+      "specializations": ["Epilepsy", "Migraine"],
+      "education": "MD in Neurology, University of Fes"
+    },
+    {
+      "id": 6,
+      "name": "Dr. Samira El Fassi",
+      "specialty": "Gynecologist",
+      "image": "/images/doctor06.avif",
+      "address": "303 Boulevard Zerktouni, Casablanca, Morocco",
+      "price": 320,
+      "reviews": 4.7,
+      "experience": "14 years",
+      "languages": ["Arabic", "French", "English"],
+      "specializations": ["Pregnancy Care", "Menopause Management"],
+      "education": "MD in Gynecology, University of Casablanca"
+    },
+    {
+      "id": 7,
+      "name": "Dr. Omar Khadiri",
+      "specialty": "Psychiatrist",
+      "image": "/images/doctor07.avif",
+      "address": "404 Rue Ibn Tachfine, Rabat, Morocco",
+      "price": 280,
+      "reviews": 4.6,
+      "experience": "11 years",
+      "languages": ["Arabic", "French", "English"],
+      "specializations": ["Depression", "Anxiety Disorders"],
+      "education": "MD in Psychiatry, University of Rabat"
+    },
+    {
+      "id": 8,
+      "name": "Dr. Nadia El Khattabi",
+      "specialty": "Endocrinologist",
+      "image": "/images/doctor08.avif",
+      "address": "505 Avenue Mohammed VI, Marrakech, Morocco",
+      "price": 380,
+      "reviews": 4.8,
+      "experience": "16 years",
+      "languages": ["Arabic", "French", "English"],
+      "specializations": ["Diabetes Management", "Thyroid Disorders"],
+      "education": "MD in Endocrinology, University of Marrakech"
+    },
+    {
+      "id": 9,
+      "name": "Dr. Hassan El Mansouri",
+      "specialty": "Oncologist",
+      "image": "/images/doctor09.avif",
+      "address": "606 Rue Al Massira, Tangier, Morocco",
+      "price": 450,
+      "reviews": 4.9,
+      "experience": "19 years",
+      "languages": ["Arabic", "French", "English"],
+      "specializations": ["Cancer Treatment", "Chemotherapy"],
+      "education": "MD in Oncology, University of Tangier"
+    }
+  ],
+  "reservations": []
+}
