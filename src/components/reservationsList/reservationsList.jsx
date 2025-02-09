@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./reservationsList.css";
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../../redux/doctorsSlice";
 import { fetchResevations } from "../../redux/ReservationsSlice";

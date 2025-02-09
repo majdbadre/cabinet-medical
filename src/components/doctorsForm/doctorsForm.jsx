@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./doctorsForm.css";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchData } from "../../redux/doctorsSlice";

@@ -3,7 +3,10 @@ import axios from "axios";
 
 // Async Thunk to Fetch Data
 export const fetchData = createAsyncThunk("doctors/fetchData", async () => {
-  const response = await axios.get("/data.json"); // Path to your JSON file
+  const response = await axios.get(
+    "http://localhost/cabinet-medical-api/index.php"
+  ); // Path to your JSON file
+  console.log(response.data);
   return response.data;
 });
 
@@ -30,7 +33,7 @@ const doctorsSlice = createSlice({
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         state.loading = false;
-        state.doctors = action.payload.doctors; // Set doctors data
+        state.doctors = action.payload; // Set doctors data
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.loading = false;

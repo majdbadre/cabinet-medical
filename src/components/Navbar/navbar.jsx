@@ -15,7 +15,7 @@ const Navbar = () => {
     <header className="header-navbar">
       <div className="container">
         <div className="logo-section">
-          <img src="/images/logo.png" alt="" />
+          <img src="/images/logo.png" alt="" className="w-10 h-10"/>
           <h1>Rendez-vous Médical</h1>
         </div>
         <div className="links-section">
