@@ -6,7 +6,7 @@ const DoctorsFitler = () => {
   const handleFilter = (e) => {
     dispatch(setSearchTerm(e.target.value));
   };
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <div className="w-1/5 px-10">
@@ -20,22 +20,28 @@ const DoctorsFitler = () => {
               className="mr-1"
               value="homme"
               onChange={(e) => handleFilter(e)}
+              id="homme"
+              name="gender"
             />
-            homme
+            <label htmlFor="homme">homme</label>
             <input
               type="radio"
               className="ml-4 mr-1"
               value="femme"
+              id="femme"
               onChange={(e) => handleFilter(e)}
+              name="gender"
             />{" "}
-            Femme
+            <label htmlFor="femme">Femme</label>
             <input
               type="radio"
               className="ml-4 mr-1"
               value=""
+              id="all"
+              name="gender"
               onChange={(e) => handleFilter(e)}
             />
-            All
+            <label htmlFor="all">All</label>
           </div>
         </div>
         <div>
@@ -47,11 +53,11 @@ const DoctorsFitler = () => {
             onChange={(e) => handleFilter(e)}
           >
             <option value="">sélectionner le frais</option>
-            <option value="50">50$</option>
-            <option value="100">100$</option>
-            <option value="150">150$</option>
-            <option value="200">200$</option>
-            <option value="200">autre</option>
+            <option value="300">300MAD</option>
+            <option value="400">400MAD</option>
+            <option value="500">500MAD</option>
+            <option value="600">600MAD</option>
+            <option value="700">700 MAD et plus</option>
           </select>
         </div>
         <div>
@@ -63,11 +69,12 @@ const DoctorsFitler = () => {
             onChange={(e) => handleFilter(e)}
           >
             <option value="">sélectionner l'experience</option>
-            <option value="1">1 ans</option>
-            <option value="2">2 ans</option>
-            <option value="3">3 ans</option>
-            <option value="4">4 ans</option>
-            <option value="5">5+ ans</option>
+            <option value="5">5 ans</option>
+            <option value="6">6 ans</option>
+            <option value="7">7 ans</option>
+            <option value="8">8 ans</option>
+            <option value="9">9 ans</option>
+            <option value="10">10 ans et plus</option>
           </select>
         </div>
       </div>

@@ -13,7 +13,7 @@ const Navbar = () => {
     dispatch(setSearchTerm(term));
   };
   return (
-    <header className="px-8 py-4">
+    <header className="px-20 py-4">
       <div className="flex justify-between">
         <div className="logo-section">
           <img src="/images/logo.png" alt="" className="w-7 h-7" />

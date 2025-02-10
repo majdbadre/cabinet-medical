@@ -4,13 +4,13 @@ import { FiPhone } from "react-icons/fi";
 import { MdWorkHistory } from "react-icons/md";
 import { SiGooglemaps } from "react-icons/si";
 
-const Doctor = ({doctor}) => {
+const Doctor = ({ doctor, handleVisbility }) => {
   return (
     <div className="bg-white rounded-2xl shadow p-4 mb-4">
       <div className="flex items-center">
         <img
           class="w-30 h-30 rounded-full"
-          src="images/doctor02.avif"
+          src={doctor.image}
           alt="Doctor Image"
         />
         <div className="ml-4">
@@ -54,7 +54,10 @@ const Doctor = ({doctor}) => {
             {doctor.phone}
           </span>
         </div>
-        <button className="ml-4 bg-[#feaf62] text-black py-2 px-3 rounded text-sm cursor-pointer font-bold font-sans hover:bg-[#fbc58e]">
+        <button
+          onClick={() => handleVisbility(doctor.id)}
+          className="ml-4 bg-[#feaf62] text-black py-2 px-3 rounded text-sm cursor-pointer font-bold font-sans hover:bg-[#fbc58e]"
+        >
           Book Appointment
         </button>
       </div>
