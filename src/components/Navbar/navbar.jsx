@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./navbar.css";
-import { setSearchTerm } from "../../redux/doctorsSlice";
+import { setSearchTerm } from "../../features/doctor/doctorsSlice";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 
 const Navbar = () => {

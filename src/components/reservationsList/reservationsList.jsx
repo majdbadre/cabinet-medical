@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../redux/doctorsSlice";
-import { fetchResevations } from "../../redux/ReservationsSlice";
+import { fetchData } from "../../features/doctor/doctorsSlice";
+import { fetchResevations } from "../../features/reservation/reservationsSlice";
 
 const ReservationsList = () => {
   const reservations = useSelector((state) => state.reservations.reservations);

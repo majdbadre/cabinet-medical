@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import { MdWorkHistory } from "react-icons/md";
 import { SiGooglemaps } from "react-icons/si";
 
 const Doctor = ({ doctor, handleVisbility }) => {
+
   return (
     <div className="bg-white rounded-2xl shadow p-4 mb-4">
       <div className="flex items-center">
         <img
-          class="w-30 h-30 rounded-full"
+          className="w-30 h-30 rounded-full"
           src={doctor.image}
           alt="Doctor Image"
         />

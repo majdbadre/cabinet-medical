@@ -1,5 +1,5 @@
 import React from "react";
-import { setSearchTerm } from "../../redux/doctorsSlice";
+import { setSearchTerm } from "../../features/doctor/doctorsSlice";
 import { useDispatch } from "react-redux";
 
 const DoctorsFitler = () => {

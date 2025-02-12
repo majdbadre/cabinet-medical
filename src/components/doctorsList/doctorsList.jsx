@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../redux/doctorsSlice";
+import { fetchData } from "../../features/doctor/doctorsSlice";
 import DoctorsFitler from "./doctorsFitler";
 import Doctor from "./doctor";
 import DoctorsForm from "../doctorsForm/doctorsForm";
@@ -13,7 +13,6 @@ const DoctorsList = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [doctorSelected, setDoctorSelected] = useState("");
 
-  console.log(parseInt(searchTerm));
 
   useEffect(() => {
     if (doctors.length === 0) {
@@ -58,7 +57,11 @@ const DoctorsList = () => {
   return (
     <div className="relative">
       {isVisible && (
-        <div className={`absolute inset-0 bg-black opacity-25 z-1 ${filteredDoctors.length === 1 ? 'h-dvh' : ""}`}></div>
+        <div
+          className={`absolute inset-0 bg-black opacity-25 z-1 ${
+            filteredDoctors.length === 1 ? "h-dvh" : ""
+          }`}
+        ></div>
       )}
       <div className="flex justify-center py-8">
         <DoctorsFitler />
@@ -75,7 +78,12 @@ const DoctorsList = () => {
           ))}
         </div>
       </div>
-      {isVisible && <DoctorsForm doctorId={doctorSelected} handleVisibilty={handleVisbility}/>}
+      {isVisible && (
+        <DoctorsForm
+          doctorId={doctorSelected}
+          handleVisibilty={handleVisbility}
+        />
+      )}
     </div>
   );
 };

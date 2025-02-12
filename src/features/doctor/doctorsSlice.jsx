@@ -1,16 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
-// Async Thunk to Fetch Data
+import { fetchDoctors } from "../../api/fetchData";
+
 export const fetchData = createAsyncThunk("doctors/fetchData", async () => {
-  const response = await axios.get(
-    "http://localhost/cabinet-medical-api/index.php"
-  ); // Path to your JSON file
-  console.log(response.data);
-  return response.data;
+  const response = await fetchDoctors();
+  return response
 });
 
-// Doctors Slice
 const doctorsSlice = createSlice({
   name: "doctors",
   initialState: {
