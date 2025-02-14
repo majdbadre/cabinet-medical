@@ -12,10 +12,12 @@ import {
 } from "./doctorsFunctions";
 import { addReservation } from "../../features/reservation/reservationsSlice";
 import { addReservationToDb } from "../../api/fetchData";
+import { useNavigate } from "react-router-dom";
 
 const DoctorsForm = ({ doctorId, handleVisibilty }) => {
   const { doctors } = useSelector((state) => state.doctors);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const av_doctor = useSelector((state) => state.availability.doctor); // avaibility doctor
   const getDectorSelected = doctors.filter(
     (doctor) => doctor.id === parseInt(doctorId)
@@ -51,6 +53,7 @@ const DoctorsForm = ({ doctorId, handleVisibilty }) => {
     e.preventDefault();
     console.log(reservation)
     addReservationToDb(reservation);
+    navigate('/resevation')
   };
 
   useEffect(() => {
