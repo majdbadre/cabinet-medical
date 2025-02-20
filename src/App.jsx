@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar/navbar";
 import { Route, Routes } from "react-router-dom";
 import DoctorsForm from "./components/doctorsForm/doctorsForm";
 import Reservee from "./components/resevationInfo/reservee";
+import Login from "./components/Login/login";
+import Signup from "./components/signup/signup";
 
 const App = () => {
   return (
@@ -13,7 +15,9 @@ const App = () => {
       <Routes>
         <Route path="/:id" element={<DoctorsForm />} />
         <Route path="/" element={<DoctorsList />} />
-        <Route path="/resevation" element={<Reservee />} />
+        <Route path="/reservation/:id" element={<Reservee />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<Signup />} />
       </Routes>
     </>
   );

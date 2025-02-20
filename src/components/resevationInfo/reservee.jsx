@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GrStatusGood } from "react-icons/gr";
 import { IoMdHelpCircle } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchResevations } from "../../api/fetchData";
+import { useParams } from "react-router-dom";
 
 const Reservee = () => {
+
   return (
     <div className="flex px-20 justify-center space-x-10">
       <div className="bg-white p-10 rounded-xl">

@@ -10,7 +10,6 @@ import {
   is_available,
   times_of_day,
 } from "./doctorsFunctions";
-import { addReservation } from "../../features/reservation/reservationsSlice";
 import { addReservationToDb } from "../../api/fetchData";
 import { useNavigate } from "react-router-dom";
 
@@ -53,7 +52,7 @@ const DoctorsForm = ({ doctorId, handleVisibilty }) => {
     e.preventDefault();
     console.log(reservation)
     addReservationToDb(reservation);
-    navigate('/resevation')
+    navigate(`/reservation/${doctorId}`)
   };
 
   useEffect(() => {

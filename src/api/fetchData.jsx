@@ -31,11 +31,26 @@ export const addReservationToDb = (reservation) => {
       },
     })
     .then((response) => {
-      console.log(response); // Log the entire response
       alert(response.data.message);
     })
     .catch((err) => {
       console.error(err);
       alert("An error occurred while submitting the reservation.");
     });
+};
+
+export const fetchResevations = async (doctorId) => {
+  try {
+    const response = await axios.get(
+      "http://localhost/cabinet-medical-api/reservations.php",
+      {
+        params: {
+          doctor_id: doctorId,
+        },
+      }
+    );
+    return response.data;
+  } catch (err) {
+    console.log("Error fetching data", err);
+  }
 };
