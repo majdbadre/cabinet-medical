@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./navbar.css";
 import { setSearchTerm } from "../../features/doctor/doctorsSlice";
 import { useDispatch } from "react-redux";
 import { CiSearch } from "react-icons/ci";
@@ -7,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
+
   const dispatch = useDispatch();
   const [term, setTerm] = useState("");
   const handleClick = (e) => {
@@ -17,9 +16,9 @@ const Navbar = () => {
   return (
     <header className="px-20 py-4">
       <div className="flex justify-between">
-        <div className="logo-section">
+        <div className="flex items-center space-x-2">
           <img src="/images/logo.png" alt="" className="w-7 h-7" />
-          <p>MedicalMa</p>
+          <Link to="/">MedicalMa</Link>
         </div>
         {pathname === "/" && (
           <div className="flex justify-between w-1/4 text-end relative">
