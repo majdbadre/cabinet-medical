@@ -8,6 +8,9 @@ import { GrStatusGood } from "react-icons/gr";
 import { MdErrorOutline } from "react-icons/md";
 
 import { addUserTodb } from "../../api/fetchData";
+import img from "/images/login-doc.png";
+import { isLoggedIn } from "../../features/login/loginSlice";
+import { useDispatch } from "react-redux";
 
 const Signup = () => {
   const [userName, setUserName] = useState("");
@@ -18,6 +21,7 @@ const Signup = () => {
   const [phone, setPhone] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,8 +50,9 @@ const Signup = () => {
 
   if (success) {
     if (!success.includes("already")) {
-      navigate('/login')
-    } 
+      dispatch(isLoggedIn());
+      navigate("/login");
+    }
   }
 
   return (
@@ -143,12 +148,12 @@ const Signup = () => {
               type="submit"
               className="bg-blue-500 px-8 py-2 text-sm font-bold text-white rounded hover:bg-blue-300"
             >
-              Login Now
+              Sign Up
             </button>
             <p className="text-sm">
               already sign-up?{" "}
               <Link
-                to="login"
+                to="/login"
                 className="text-black underline hover:text-blue-500"
               >
                 login
@@ -158,11 +163,7 @@ const Signup = () => {
         </form>
       </div>
       <div className="w-100">
-        <img
-          src="images/login-doc.png"
-          alt="login-img"
-          className="w-full rounded-xl"
-        />
+        <img src={img} alt="login-img" className="w-full rounded-xl" />
       </div>
     </div>
   );

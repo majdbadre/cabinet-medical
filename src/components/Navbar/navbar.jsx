@@ -1,17 +1,28 @@
 import React, { useState } from "react";
 import { setSearchTerm } from "../../features/doctor/doctorsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CiSearch } from "react-icons/ci";
 import { Link, useLocation } from "react-router-dom";
+import { IoIosLogOut } from "react-icons/io";
+import { isLoggedOut } from "../../features/login/loginSlice";
 
 const Navbar = () => {
   const { pathname } = useLocation();
+  const { loggedIn } = useSelector((state) => state.login);
 
   const dispatch = useDispatch();
+
   const [term, setTerm] = useState("");
+
   const handleClick = (e) => {
     setTerm(e.target.value);
     dispatch(setSearchTerm(term));
+  };
+
+  const handleLogout = () => {
+    if (confirm("are you sure to logout?")) {
+      dispatch(isLoggedOut());
+    }
   };
   return (
     <header className="px-20 py-4">
@@ -20,7 +31,7 @@ const Navbar = () => {
           <img src="/images/logo.png" alt="" className="w-7 h-7" />
           <Link to="/">MedicalMa</Link>
         </div>
-        {pathname === "/" && (
+        {pathname === "/doctors" && loggedIn && (
           <div className="flex justify-between w-1/4 text-end relative">
             <CiSearch className="absolute left-2 top-2 text-sm text-black font-bold" />
             <input
@@ -30,18 +41,30 @@ const Navbar = () => {
               value={term}
               onChange={handleClick}
             />
-            <Link
-              to="login"
-              className="border border-gray-300 rounded py-1 px-3 text-sm font-bold"
-            >
-              Login
-            </Link>
-            <Link
-              to="sign-up"
-              className="bg-blue-700 px-3 py-1 text-sm rounded text-white font-bold"
-            >
-              Sign up
-            </Link>
+            {!loggedIn ? (
+              <>
+                <Link
+                  to="login"
+                  className="border border-gray-300 rounded py-1 px-3 text-sm font-bold"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="sign-up"
+                  className="bg-blue-700 px-3 py-1 text-sm rounded text-white font-bold"
+                >
+                  Sign up
+                </Link>
+              </>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className=" flex items-center border border-red-500 px-3 py-1 text-sm rounded text-red-500 font-bold cursor-pointer"
+              >
+                <IoIosLogOut />
+                Logout
+              </button>
+            )}
           </div>
         )}
       </div>

@@ -3,28 +3,34 @@ import { FiUser } from "react-icons/fi";
 import { RiLock2Line } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUserFromDb } from "../../api/fetchData";
+import { isLoggedIn, setUserName } from "../../features/login/loginSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState([]);
-  const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!user || !password) {
       alert("All field are required!");
       return;
-    }
-    if (password.length < 8) {
+    } else if (password.length < 8) {
       alert("Password Most be great than 8 letters!");
-    }
-
-    setData(loginUserFromDb(user, password));
-
-    if (data) {
-      navigate("/");
+    } else {
+      if (loginUserFromDb(user, password)) {
+        
+      } else {
+        alert(message);
+        // acton for logged in user
+        dispatch(isLoggedIn());
+        // action for using name of user in all pages
+        dispatch(setUserName(user));
+        // navigate to page user if user is logged
+        navigate("/doctors");
+      }
     }
   };
   return (
@@ -65,10 +71,7 @@ const Login = () => {
             </button>
             <p className="text-sm">
               Need an acount?{" "}
-              <Link
-                to="sign-up"
-                className="text-black underline hover:text-blue-500"
-              >
+              <Link to="/" className="text-black underline hover:text-blue-500">
                 sign-up
               </Link>
             </p>

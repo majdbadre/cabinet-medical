@@ -17,12 +17,14 @@ const DoctorsForm = ({ doctorId, handleVisibilty }) => {
   const { doctors } = useSelector((state) => state.doctors);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { username } = useSelector((state) => state.login);
   const av_doctor = useSelector((state) => state.availability.doctor); // avaibility doctor
   const getDectorSelected = doctors.filter(
     (doctor) => doctor.id === parseInt(doctorId)
   );
+
   const [reservation, setReservation] = useState({
-    user_id: 1,
+    username,
     doctor_id: getDectorSelected[0].id,
     specialty_id: getDectorSelected[0].specialty_id,
     reservation_date: "",
@@ -50,9 +52,9 @@ const DoctorsForm = ({ doctorId, handleVisibilty }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(reservation)
+    console.log(reservation);
     addReservationToDb(reservation);
-    navigate(`/reservation/${doctorId}`)
+    navigate(`/reservation/${doctorId}`);
   };
 
   useEffect(() => {
@@ -141,28 +143,31 @@ const DoctorsForm = ({ doctorId, handleVisibilty }) => {
                       // filter the day selected by user
                       return times_of_day(av.start_time, av.end_time).length >
                         0 ? (
-                        times_of_day(av.start_time, av.end_time).map((time) => {
-                          const available = is_available(
-                            time,
-                            av.start_time,
-                            av.end_time,
-                            av.is_available
-                          ); // feature for show the availability of the doctor
-                          return (
-                            <input
-                              className={`text-center py-2 w-20 rounded-3xl mr-2 my-1 outline-none ${
-                                available
-                                  ? "bg-gray-100 text-gray-300"
-                                  : "border border-blue-300 cursor-pointer" // style for availbility
-                              }`}
-                              onClick={() =>
-                                !available ? handleReseravtionDate(time) : ""
-                              }
-                              value={convert_time(time)}
-                              readOnly
-                            />
-                          );
-                        })
+                        times_of_day(av.start_time, av.end_time).map(
+                          (time, idx) => {
+                            const available = is_available(
+                              time,
+                              av.start_time,
+                              av.end_time,
+                              av.is_available
+                            ); // feature for show the availability of the doctor
+                            return (
+                              <input
+                                key={idx}
+                                className={`text-center py-2 w-20 rounded-3xl mr-2 my-1 outline-none ${
+                                  available
+                                    ? "bg-gray-100 text-gray-300"
+                                    : "border border-blue-300 cursor-pointer" // style for availbility
+                                }`}
+                                onClick={() =>
+                                  !available ? handleReseravtionDate(time) : ""
+                                }
+                                value={convert_time(time)}
+                                readOnly
+                              />
+                            );
+                          }
+                        )
                       ) : (
                         <div className="flex font-bold text-amber-500">
                           <CgDanger className="mr-1 text-xl" /> Le docteur n'est
