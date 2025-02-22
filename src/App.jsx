@@ -10,21 +10,23 @@ import Signup from "./components/signup/signup";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const { loggedIn } = useSelector((state) => state.login);
+  const { isLogged, user } = useSelector((state) => state.user);
+  console.log(isLogged);
+
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/:id" element={loggedIn ? <DoctorsForm /> : <Signup />} />
+        <Route path="/:id" element={isLogged ? <DoctorsForm /> : <Signup />} />
         <Route path="/" element={<Signup />} />
         <Route
-          path={`${loggedIn ? "/reservation/:id" : "/"}`}
-          element={loggedIn ? <Reservee /> : <Signup />}
+          path={`${isLogged ? "/reservation/:id" : "/"}`}
+          element={isLogged ? <Reservee /> : <Signup />}
         />
         <Route path="/login" element={<Login />} />
         <Route
-          path={`${loggedIn ? "/doctors" : "/"}`}
-          element={loggedIn ? <DoctorsList /> : <Signup />}
+          path={`${isLogged ? "/doctors" : "/"}`}
+          element={isLogged ? <DoctorsList /> : <Signup />}
         />
       </Routes>
     </>

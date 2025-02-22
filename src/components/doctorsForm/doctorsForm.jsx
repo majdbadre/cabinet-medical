@@ -17,14 +17,15 @@ const DoctorsForm = ({ doctorId, handleVisibilty }) => {
   const { doctors } = useSelector((state) => state.doctors);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { username } = useSelector((state) => state.login);
-  const av_doctor = useSelector((state) => state.availability.doctor); // avaibility doctor
+  const { user } = useSelector((state) => state.user);
+  const av_doctor = useSelector((state) => state.availability.doctor); 
   const getDectorSelected = doctors.filter(
     (doctor) => doctor.id === parseInt(doctorId)
   );
 
+
   const [reservation, setReservation] = useState({
-    username,
+    user_id: user.id,
     doctor_id: getDectorSelected[0].id,
     specialty_id: getDectorSelected[0].specialty_id,
     reservation_date: "",
@@ -52,7 +53,6 @@ const DoctorsForm = ({ doctorId, handleVisibilty }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(reservation);
     addReservationToDb(reservation);
     navigate(`/reservation/${doctorId}`);
   };

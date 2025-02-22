@@ -3,8 +3,8 @@ import { FiUser } from "react-icons/fi";
 import { RiLock2Line } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUserFromDb } from "../../api/fetchData";
-import { isLoggedIn, setUserName } from "../../features/login/loginSlice";
 import { useDispatch } from "react-redux";
+import { setUserLogged } from "../../features/user/userSlice";
 
 const Login = () => {
   const [user, setUser] = useState("");
@@ -19,20 +19,24 @@ const Login = () => {
       return;
     } else if (password.length < 8) {
       alert("Password Most be great than 8 letters!");
-    } else {
-      if (loginUserFromDb(user, password)) {
-        
-      } else {
-        alert(message);
-        // acton for logged in user
-        dispatch(isLoggedIn());
-        // action for using name of user in all pages
-        dispatch(setUserName(user));
-        // navigate to page user if user is logged
-        navigate("/doctors");
+    }
+    handleLogin(user, password);
+  };
+
+  const handleLogin = async (user, password) => {
+    try {
+      const data = await loginUserFromDb(user, password);
+      if (typeof data === "string") {
+        alert(data);
+        return;
       }
+      dispatch(setUserLogged(data));
+      navigate("/doctors");
+    } catch (err) {
+      console.log(err);
     }
   };
+
   return (
     <div className="flex justify-center space-x-8">
       <div className="w-80 space-y-4">

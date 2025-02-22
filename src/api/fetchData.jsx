@@ -68,10 +68,10 @@ export const addUserTodb = async (user, setSuccess) => {
 
 export const loginUserFromDb = async (user, password) => {
   try {
-    const response = axios.get(USER_URL, { params: { user, password } });
-    return await response.data;
+    const response = await axios.get(USER_URL, { params: { user, password } });
+    return response.data; // Return the data directly
   } catch (err) {
-    console.log(err);
+    throw err; // Throw error to be handled in the calling function
   }
 };
 

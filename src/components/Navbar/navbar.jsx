@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { CiSearch } from "react-icons/ci";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
-import { isLoggedOut } from "../../features/login/loginSlice";
+import { setUserLoggout } from "../../features/user/userSlice";
 
 const Navbar = () => {
   const { pathname } = useLocation();
-  const { loggedIn } = useSelector((state) => state.login);
+  const { isLogged } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     if (confirm("are you sure to logout?")) {
-      dispatch(isLoggedOut());
+      dispatch(setUserLoggout());
     }
   };
   return (
@@ -31,7 +31,7 @@ const Navbar = () => {
           <img src="/images/logo.png" alt="" className="w-7 h-7" />
           <Link to="/">MedicalMa</Link>
         </div>
-        {pathname === "/doctors" && loggedIn && (
+        {pathname === "/doctors" && isLogged && (
           <div className="flex justify-between w-1/4 text-end relative">
             <CiSearch className="absolute left-2 top-2 text-sm text-black font-bold" />
             <input
@@ -41,7 +41,7 @@ const Navbar = () => {
               value={term}
               onChange={handleClick}
             />
-            {!loggedIn ? (
+            {!isLogged ? (
               <>
                 <Link
                   to="login"
