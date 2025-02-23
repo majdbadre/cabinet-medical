@@ -18,11 +18,10 @@ const DoctorsForm = ({ doctorId, handleVisibilty }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
-  const av_doctor = useSelector((state) => state.availability.doctor); 
+  const av_doctor = useSelector((state) => state.availability.doctor);
   const getDectorSelected = doctors.filter(
     (doctor) => doctor.id === parseInt(doctorId)
   );
-
 
   const [reservation, setReservation] = useState({
     user_id: user.id,

@@ -58,7 +58,7 @@ const Login = () => {
           <div className="relative">
             <RiLock2Line className="absolute top-3 left-3 text-xl text-gray-500" />
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
